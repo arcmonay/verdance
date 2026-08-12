@@ -1,22 +1,24 @@
 import Image from "next/image";
 
 type BrandLogoProps = {
-  size?: number;
+  width?: number;
+  height?: number;
   priority?: boolean;
   className?: string;
 };
 
 export function BrandLogo({
-  size = 40,
+  width = 34,
+  height = 52,
   priority = false,
   className = "",
 }: BrandLogoProps) {
   return (
     <Image
       src="/logo.png"
-      alt="Verdance kingfisher mark"
-      width={size}
-      height={size}
+      alt="VRDNC"
+      width={width}
+      height={height}
       priority={priority}
       className={`brand-logo ${className}`.trim()}
     />

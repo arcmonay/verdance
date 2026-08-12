@@ -30,7 +30,7 @@ export default function HomePage() {
         <div className="container relative grid min-h-[calc(100svh-4.25rem)] items-center py-16 md:py-20">
           <div className="max-w-xl">
             <p className="eyebrow fade-up">Sustainable home electronics</p>
-            <BrandLogo size={88} priority className="fade-up mt-5" />
+            <BrandLogo width={72} height={108} priority className="fade-up mt-5" />
             <h1 className="font-display fade-up-delay mt-4 text-[clamp(3.2rem,8vw,5.6rem)] leading-[0.95] tracking-tight">
               Verdan<span className="text-[var(--ember)]">ce</span>
             </h1>

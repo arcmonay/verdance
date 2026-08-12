@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
-            <BrandLogo size={52} />
+            <BrandLogo width={42} height={64} />
             <p className="font-display text-3xl font-semibold tracking-tight">
               Verdan<span className="text-[var(--ember)]">ce</span>
             </p>
