@@ -66,7 +66,7 @@ export function Footer() {
       </div>
       <div className="border-t border-[var(--line)]">
         <div className="container flex flex-col gap-2 py-5 text-xs text-[var(--ink-faint)] sm:flex-row sm:justify-between">
-          <p>© {new Date().getFullYear()} Verdance. Built for Shopify catalog import.</p>
+          <p>© 2025 Verdance. Built for Shopify catalog import.</p>
           <p>Designed for quieter kitchens and lighter households.</p>
         </div>
       </div>
