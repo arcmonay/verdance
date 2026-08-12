@@ -8,8 +8,8 @@ import { useCart } from "@/lib/cart-context";
 const links = [
   { href: "/shop", label: "The beds" },
   { href: "/collections/composters", label: "Compost" },
-  { href: "/collections/smart-home", label: "Kitchen" },
-  { href: "/collections/home-garden", label: "Garden" },
+  { href: "/collections/waste-systems", label: "Waste" },
+  { href: "/collections/dehumidifiers", label: "Climate" },
   { href: "/impact", label: "Impact" },
   { href: "/about", label: "Story" },
 ];

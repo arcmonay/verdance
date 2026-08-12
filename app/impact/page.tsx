@@ -15,8 +15,8 @@ export default function ImpactPage() {
         <p>
           Household waste and standby power add up quietly. Verdance machines
           are specified for the jobs that actually move the needle: keeping
-          food scraps out of landfill, drying surplus produce, and running
-          climate and leak systems on a modest energy budget.
+          food scraps out of landfill, drying surplus produce, and pulling
+          moisture out of a damp room.
         </p>
         <p>
           We favor recycled and recyclable housings, replaceable filters and
@@ -27,16 +27,16 @@ export default function ImpactPage() {
         <p>
           Impact claims on product pages are operational, not carbon-offset
           theater. Composters reduce organic waste volume. Dehumidifiers are
-          chosen for pint capacity and watt class. Smart-home sensors exist to
-          catch leaks and idle loads before they become a repair.
+          chosen for pint capacity and watt class. The thermostat trims HVAC
+          runtime. The grow light is a fixture, not a plant.
         </p>
       </div>
       <div className="leaves mt-10">
         {[
           ["Materials", "Recycled ABS, stainless, and replaceable filter packs."],
-          ["Energy", "Energy Star dehumidifiers and low-draw smart plugs."],
-          ["Waste", "Kitchen composters and dual-stream recycling stations."],
-          ["Repair", "Trays, liners, and filters sold as standalone SKUs."],
+          ["Energy", "Energy Star–class dehumidifiers and a wall thermostat."],
+          ["Waste", "Kitchen composters, a yard tumbler, and sensor cans."],
+          ["Repair", "The photo on each listing is the machine you receive."],
         ].map(([k, v]) => (
           <div key={k} className="leaf">
             <strong className="font-display">{k}</strong>

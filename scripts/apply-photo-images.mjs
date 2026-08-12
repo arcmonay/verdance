@@ -1,3 +1,7 @@
+throw new Error(
+  "Stopped. Catalog photos are assigned per SKU in generate-catalog.mjs — do not rotate the photo library.",
+);
+
 import {
   copyFileSync,
   mkdirSync,

@@ -16,6 +16,7 @@
   --foreground: var(--ink);
   --panel: #3d8f5c;
   --panel-dim: #1e3d2c;
+  --paper: #f4f0e6;
 }
 
 @theme inline {
@@ -475,6 +476,16 @@ input {
   background:
     radial-gradient(ellipse at 72% 38%, rgba(61, 143, 92, 0.28), transparent 42%),
     linear-gradient(135deg, #1a2a22, #121a16 55%, #18241e);
+}
+
+.product-shot {
+  background: var(--paper);
+}
+
+.product-shot img {
+  object-fit: contain;
+  object-position: center;
+  background: var(--paper);
 }
 
 .product-glow {

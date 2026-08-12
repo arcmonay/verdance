@@ -18,9 +18,9 @@ export default function AboutPage() {
           Shopify-importable catalog.
         </p>
         <p>
-          This project ships with 110+ SKUs across composters, waste systems,
-          dehumidifiers, produce dryers, smart-home sensors, garden tools,
-          accessories, and bundles—so the plot feels complete from day one.
+          Ten machines: kitchen composters, a yard tumbler, sensor cans,
+          portable dehumidifiers, a tray dryer, a wall thermostat, and a grow
+          light. Each listing uses a catalog photo of that unit.
         </p>
         <p>
           Connect your Shopify store when you&apos;re ready: import{" "}

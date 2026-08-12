@@ -9,6 +9,8 @@ export function Footer() {
       <nav>
         <Link href="/shop">The beds</Link>
         <Link href="/collections/composters">Compost</Link>
+        <Link href="/collections/waste-systems">Waste</Link>
+        <Link href="/collections/dehumidifiers">Climate</Link>
         <Link href="/impact">Impact</Link>
         <Link href="/about">Story</Link>
         <Link href="/cart">Basket</Link>

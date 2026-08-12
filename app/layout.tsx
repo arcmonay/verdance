@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s · Verdance",
   },
   description:
-    "Sustainable home electronics and home & garden systems—composters, waste systems, Energy Star dehumidifiers, and smart-home sensors. Shopify-ready catalog.",
+    "Kitchen composters, outdoor tumblers, sensor cans, portable dehumidifiers, and a tray dryer. Each listing shows a catalog photo of that machine.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

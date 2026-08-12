@@ -18,8 +18,8 @@ export default function HomePage() {
           house quiet.
         </h1>
         <p className="greenhouse__lede">
-          Composters, sensors, and garden tools that take the waste out of the
-          week without making a scene.
+          Kitchen composters, outdoor tumblers, sensor cans, dehumidifiers, and
+          a tray dryer — each listing shows the machine in the photo.
         </p>
         <Link href="/shop" className="seed">
           Walk the beds →

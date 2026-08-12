@@ -10,7 +10,7 @@ import {
 
 export const metadata = {
   title: "The beds",
-  description: "Browse 110+ Verdance composters, waste systems, and home electronics.",
+  description: "Browse Verdance composters, sensor cans, dehumidifiers, and home machines.",
 };
 
 type Props = {
