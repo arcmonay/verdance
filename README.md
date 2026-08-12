@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Verdance
 
-## Getting Started
+Custom sustainable home electronics + home & garden storefront — Next.js + Shopify-ready catalog.
 
-First, run the development server:
+**Repo:** https://github.com/arcmonay/verdance
+
+## What’s included
+
+- Brand storefront (home, shop, collections, product pages, cart, impact, about)
+- **110+ product listings** across 8 collections
+- Unique product image for every listing in `public/products/`
+- Shopify Admin import CSV at `data/shopify-products.csv` (includes Image Src URLs)
+- Local catalog at `data/catalog.json`
+- Storefront API helper at `lib/shopify.ts`
+
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Catalog scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run catalog       # regenerate data/catalog.json
+npm run images        # generate/update all product images from the photo library
+npm run catalog:csv   # export CSV (includes image URLs for Shopify)
+```
 
-## Learn More
+Photo library downloads (Unsplash license) live in `assets/photo-library/`:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+node scripts/fetch-photos.mjs
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Shopify setup
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Create a Shopify store (or use an existing one).
+2. **Products → Import** and upload `data/shopify-products.csv` (images pull from GitHub raw URLs after push).
+3. Create a **Storefront API** token.
+4. Copy `.env.example` → `.env.local` and fill:
 
-## Deploy on Vercel
+```env
+SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+SHOPIFY_STOREFRONT_TOKEN=...
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Until Shopify credentials are connected, the site runs on the local catalog and browser cart.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Collections
+
+Composters · Waste Systems · Dehumidifiers · Produce Dryers · Smart Home · Home & Garden · Accessories · Bundles
