@@ -10,13 +10,12 @@ export function CartView() {
 
   if (!items.length) {
     return (
-      <div className="border border-[var(--line)] bg-[var(--bg-elevated)] p-10 text-center">
-        <h2 className="font-display text-3xl tracking-tight">Your cart is empty</h2>
-        <p className="mt-3 text-[var(--ink-muted)]">
-          Add composters, sensors, or kits from the shop.
+      <div className="max-w-md">
+        <p className="text-lg text-[var(--ink-muted)]">
+          The basket is empty. Walk the beds and pick a specimen.
         </p>
-        <Link href="/shop" className="btn btn-primary mt-8">
-          Continue shopping
+        <Link href="/shop" className="seed">
+          Walk the beds →
         </Link>
       </div>
     );

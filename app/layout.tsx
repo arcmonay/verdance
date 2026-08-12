@@ -30,10 +30,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="min-h-full antialiased">
         <CartProvider>
-          <div className="site-shell">
+          <div className="plot">
+            <div className="plot-body">
+              <main className="flex-1">{children}</main>
+              <Footer />
+            </div>
             <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
           </div>
         </CartProvider>
       </body>

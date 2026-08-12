@@ -1,14 +1,14 @@
 export const metadata = {
-  title: "About",
+  title: "Story",
   description: "About Verdance sustainable home electronics and garden systems.",
 };
 
 export default function AboutPage() {
   return (
-    <div className="container max-w-3xl py-12 md:py-16">
-      <p className="eyebrow">About</p>
-      <h1 className="font-display mt-3 text-4xl tracking-tight md:text-5xl">
-        Quiet machines for a lighter household
+    <article className="plot-page" style={{ maxWidth: "40rem" }}>
+      <p className="eyebrow">Story</p>
+      <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.2rem)" }}>
+        Quiet machines for a lighter household.
       </h1>
       <div className="mt-8 space-y-5 text-lg leading-relaxed text-[var(--ink-muted)]">
         <p>
@@ -20,8 +20,7 @@ export default function AboutPage() {
         <p>
           This project ships with 110+ SKUs across composters, waste systems,
           dehumidifiers, produce dryers, smart-home sensors, garden tools,
-          accessories, and bundles—so the shop section feels complete from day
-          one.
+          accessories, and bundles—so the plot feels complete from day one.
         </p>
         <p>
           Connect your Shopify store when you&apos;re ready: import{" "}
@@ -29,6 +28,6 @@ export default function AboutPage() {
           add Storefront API credentials, and wire live checkout.
         </p>
       </div>
-    </div>
+    </article>
   );
 }

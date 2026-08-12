@@ -9,7 +9,7 @@ import {
 } from "@/lib/products";
 
 export const metadata = {
-  title: "Shop",
+  title: "The beds",
   description: "Browse 110+ Verdance composters, waste systems, and home electronics.",
 };
 
@@ -30,27 +30,22 @@ export default async function ShopPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="container py-12 md:py-16">
-      <div className="mb-10 max-w-2xl">
-        <p className="eyebrow">Shop</p>
-        <h1 className="font-display mt-3 text-4xl tracking-tight md:text-5xl">
-          Household catalog
-        </h1>
-        <p className="mt-3 text-[var(--ink-muted)]">
-          {products.length} listings
-          {collection
-            ? ` in ${collections.find((c) => c.handle === collection)?.title ?? collection}`
-            : ""}
-          {q ? ` matching “${q}”` : ""}.
-        </p>
-      </div>
-
-      <div className="mb-10">
+    <div className="plot-page">
+      <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)" }}>
+        The beds
+      </h1>
+      <p className="mt-4 mb-10 max-w-md text-[var(--ink-muted)]">
+        {products.length} specimens
+        {collection
+          ? ` in ${collections.find((c) => c.handle === collection)?.title ?? collection}`
+          : ""}
+        {q ? ` matching “${q}”` : ""}. Planted in rows, not a warehouse aisle.
+      </p>
+      <div className="mb-12">
         <Suspense fallback={<div className="h-12" />}>
           <ShopFilters collections={collections} />
         </Suspense>
       </div>
-
       <ProductGrid products={products} />
     </div>
   );

@@ -70,14 +70,290 @@ input {
   box-shadow: none;
 }
 
-.site-shell {
+.plot {
   min-height: 100vh;
+  background:
+    radial-gradient(1200px 600px at 20% -10%, rgba(61, 143, 92, 0.16), transparent 55%),
+    radial-gradient(900px 500px at 90% 30%, rgba(196, 165, 116, 0.08), transparent 50%),
+    var(--bg);
+}
+
+.plot-body {
+  min-width: 0;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
+}
+
+.trellis {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.4rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(61, 143, 92, 0.28);
+  background: #16201b;
+}
+
+.trellis-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.trellis-brand span {
+  font-size: 1.45rem;
+  letter-spacing: -0.03em;
+}
+
+.trellis-brand span span {
+  color: var(--ember);
+}
+
+.vine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+}
+
+.vine a {
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+}
+
+.vine a:hover,
+.vine a.is-active {
+  color: var(--ink);
+}
+
+.basket {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.seed {
+  display: inline-block;
+  margin-top: 1.6rem;
+  padding: 0.75rem 1.15rem;
+  background: var(--ember);
+  color: #f4faf4;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: 0;
+  cursor: pointer;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+}
+
+.greenhouse {
+  position: relative;
+  overflow: hidden;
+  padding: 3.5rem 1.25rem 4rem;
+}
+
+.panes {
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(1200px 600px at 80% -10%, rgba(61, 143, 92, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 0% 30%, rgba(196, 165, 116, 0.08), transparent 50%),
-    var(--bg);
+    repeating-linear-gradient(
+      105deg,
+      transparent 0 72px,
+      rgba(238, 243, 236, 0.035) 72px 73px
+    );
+  pointer-events: none;
+}
+
+.greenhouse__title {
+  position: relative;
+  margin: 0.5rem 0 0;
+  font-size: clamp(3rem, 8vw, 5.8rem);
+  line-height: 0.9;
+}
+
+.greenhouse__lede {
+  position: relative;
+  margin: 1.2rem 0 0;
+  max-width: 24rem;
+  color: var(--ink-muted);
+  font-size: 1.08rem;
+  line-height: 1.55;
+}
+
+.field,
+.rows,
+.plot-page {
+  padding: 1rem 1.25rem 4rem;
+}
+
+.field__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.field__head h2,
+.rows h2 {
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+}
+
+.field__head a {
+  font-size: 0.8rem;
+  color: var(--copper);
+}
+
+.leaves {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.leaf {
+  background: #18241e;
+  border: 1px solid rgba(61, 143, 92, 0.22);
+  padding: 1.15rem 1.2rem 1.25rem;
+  border-radius: 1.6rem 0.4rem 1.8rem 0.5rem;
+}
+
+.leaf strong {
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 500;
+}
+
+.leaf span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+.rows__grid {
+  display: grid;
+  gap: 2rem 1.2rem;
+}
+
+.rows__grid p {
+  margin: 0.7rem 0 0.15rem;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.rows__grid span {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.soil {
+  background: #0c1410;
+  color: #cdd8cc;
+  padding: 3rem 1.25rem 1.8rem;
+}
+
+.soil-mark {
+  margin: 0;
+  font-size: clamp(3.2rem, 12vw, 7rem);
+  line-height: 0.8;
+  letter-spacing: 0.08em;
+}
+
+.soil-mark span {
+  color: var(--ember);
+}
+
+.soil nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.3rem;
+  margin: 1.3rem 0;
+  font-size: 0.92rem;
+}
+
+.soil p:last-child {
+  margin: 0;
+  font-size: 0.72rem;
+  opacity: 0.6;
+}
+
+@media (min-width: 960px) {
+  .plot {
+    display: grid;
+    grid-template-columns: 1fr 13.5rem;
+  }
+
+  .trellis {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.6rem 1.15rem 1.4rem;
+    border-bottom: 0;
+    border-left: 1px solid rgba(61, 143, 92, 0.28);
+  }
+
+  .trellis-brand {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .vine {
+    flex-direction: column;
+    gap: 0;
+    padding-left: 0.85rem;
+    border-left: 1px dashed rgba(61, 143, 92, 0.45);
+  }
+
+  .vine a {
+    padding: 0.45rem 0 0.45rem 0.85rem;
+    margin-left: -0.85rem;
+  }
+
+  .basket {
+    margin-left: 0;
+  }
+
+  .greenhouse {
+    min-height: 82vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 3.2rem 5rem;
+  }
+
+  .field,
+  .rows,
+  .plot-page {
+    padding-left: 3.2rem;
+    padding-right: 3.2rem;
+  }
+
+  .leaves {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .leaf:nth-child(odd) {
+    transform: translateY(0.8rem);
+  }
+
+  .rows__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .rows__drop {
+    margin-top: 2.4rem;
+  }
+
+  .soil {
+    padding: 4rem 3.2rem 2rem;
+  }
 }
 
 .container {

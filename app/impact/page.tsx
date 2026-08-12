@@ -6,10 +6,10 @@ export const metadata = {
 
 export default function ImpactPage() {
   return (
-    <div className="container max-w-3xl py-12 md:py-16">
+    <article className="plot-page" style={{ maxWidth: "42rem" }}>
       <p className="eyebrow">Impact</p>
-      <h1 className="font-display mt-3 text-4xl tracking-tight md:text-5xl">
-        Materials, energy, and less waste
+      <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.2rem)" }}>
+        Materials, energy, and less waste.
       </h1>
       <div className="mt-8 space-y-5 text-lg leading-relaxed text-[var(--ink-muted)]">
         <p>
@@ -31,22 +31,19 @@ export default function ImpactPage() {
           catch leaks and idle loads before they become a repair.
         </p>
       </div>
-      <dl className="mt-10 grid gap-4 sm:grid-cols-2">
+      <div className="leaves mt-10">
         {[
           ["Materials", "Recycled ABS, stainless, and replaceable filter packs."],
           ["Energy", "Energy Star dehumidifiers and low-draw smart plugs."],
           ["Waste", "Kitchen composters and dual-stream recycling stations."],
           ["Repair", "Trays, liners, and filters sold as standalone SKUs."],
         ].map(([k, v]) => (
-          <div
-            key={k}
-            className="rounded-2xl border border-[var(--line)] bg-[rgba(255,255,255,0.02)] p-5"
-          >
-            <dt className="font-display text-xl text-[var(--ink)]">{k}</dt>
-            <dd className="mt-2 text-sm text-[var(--ink-muted)]">{v}</dd>
+          <div key={k} className="leaf">
+            <strong className="font-display">{k}</strong>
+            <span>{v}</span>
           </div>
         ))}
-      </dl>
-    </div>
+      </div>
+    </article>
   );
 }
