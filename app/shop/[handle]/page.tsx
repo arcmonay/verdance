@@ -1,8 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { ProductGrid } from "@/components/ProductGrid";
-import { ProductVisual } from "@/components/ProductVisual";
 import {
   formatMoney,
   getCollection,
@@ -10,6 +10,7 @@ import {
   getProducts,
   getProductsByCollection,
 } from "@/lib/products";
+import { getProductGallery } from "@/lib/gallery";
 
 type Params = Promise<{ handle: string }>;
 
@@ -35,42 +36,64 @@ export default async function ProductPage({ params }: { params: Params }) {
   const collection = getCollection(product.collection);
   const related = getProductsByCollection(product.collection)
     .filter((p) => p.id !== product.id)
-    .slice(0, 4);
+    .slice(0, 3);
+  const gallery = getProductGallery(product.handle, product.image);
+  const plateNo = product.sku.replace(/\D/g, "").padStart(2, "0") || "01";
+  const angles = gallery.slice(1);
 
   return (
     <>
-      <article className="plot-page grid gap-10 md:grid-cols-2">
-        <ProductVisual
-          product={product}
-          priority
-          className="!aspect-square"
-        />
-        <div>
-          {collection ? (
-            <p className="text-sm text-[var(--ink-faint)]">
-              <Link
-                href={`/collections/${collection.handle}`}
-                className="hover:text-[var(--ink)]"
-              >
+      <article className="specimen-sheet">
+        <div className="specimen-gallery">
+          <div className="specimen-hero-shot">
+            <Image
+              src={gallery[0]}
+              alt={product.title}
+              fill
+              priority
+              sizes="(max-width: 960px) 100vw, 50vw"
+              className="object-contain"
+            />
+          </div>
+          {angles.length ? (
+            <div className="specimen-angles">
+              {angles.map((src, i) => (
+                <div
+                  key={src}
+                  className={`specimen-angle${src.includes("/catalog/") ? " specimen-angle--machine" : ""}`}
+                >
+                  <Image
+                    src={src}
+                    alt={`${product.title} — angle ${i + 2}`}
+                    fill
+                    sizes="160px"
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
+        </div>
+
+        <div className="specimen-copy">
+          <div className="specimen-copy__plate">
+            <span>Plate {plateNo}</span>
+            {collection ? (
+              <Link href={`/collections/${collection.handle}`}>
                 {collection.title}
               </Link>
-            </p>
-          ) : null}
-          <h1 className="font-display mt-2 text-4xl tracking-tight md:text-5xl">
-            {product.title}
-          </h1>
-          <p className="mt-4 text-2xl font-semibold">
+            ) : (
+              <span>{product.collection}</span>
+            )}
+          </div>
+          <h1 className="font-display">{product.title}</h1>
+          <p className="specimen-price">
             {formatMoney(product.price)}
             {product.compareAtPrice ? (
-              <span className="ml-3 text-base font-normal text-[var(--ink-faint)] line-through">
-                {formatMoney(product.compareAtPrice)}
-              </span>
+              <s>{formatMoney(product.compareAtPrice)}</s>
             ) : null}
           </p>
-          <p className="mt-5 max-w-xl text-[var(--ink-muted)] leading-relaxed">
-            {product.description}
-          </p>
-          <ul className="mt-8 space-y-3 border-t border-[var(--line)] pt-6 text-sm">
+          <p className="specimen-blurb">{product.description}</p>
+          <ul className="ledger-rows">
             {[
               ["Material", product.material],
               ["Size", product.size],
@@ -79,8 +102,8 @@ export default async function ProductPage({ params }: { params: Params }) {
               ["Weight", `${product.weightLbs} lb`],
               ["SKU", product.sku],
             ].map(([label, value]) => (
-              <li key={label} className="flex justify-between gap-4">
-                <span className="text-[var(--ink-faint)]">{label}</span>
+              <li key={label}>
+                <span>{label}</span>
                 <strong>{value}</strong>
               </li>
             ))}
@@ -92,14 +115,10 @@ export default async function ProductPage({ params }: { params: Params }) {
       </article>
 
       {related.length ? (
-        <section className="plot-page pt-0">
-          <div className="mb-8 max-w-xl">
-            <h2 className="font-display text-3xl tracking-tight">
-              Same bed
-            </h2>
-            <p className="mt-2 text-[var(--ink-muted)]">
-              More options with a similar form factor.
-            </p>
+        <section className="section">
+          <div className="section__head">
+            <h2 className="font-display">Same genus</h2>
+            <p>Related machines</p>
           </div>
           <ProductGrid products={related} />
         </section>

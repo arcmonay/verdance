@@ -16,14 +16,14 @@ export function AddToCartButton({
   return (
     <button
       type="button"
-      className={`seed ${className}`.trim()}
+      className={`sow ${className}`.trim()}
       onClick={() => {
         addItem(handle);
         setAdded(true);
         window.setTimeout(() => setAdded(false), 1400);
       }}
     >
-      {added ? "In the basket" : "Drop in the basket →"}
+      {added ? "In the packet" : "Sow into packet"}
     </button>
   );
 }

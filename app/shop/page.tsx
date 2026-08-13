@@ -9,8 +9,9 @@ import {
 } from "@/lib/products";
 
 export const metadata = {
-  title: "The beds",
-  description: "Browse Verdance composters, sensor cans, dehumidifiers, and home machines.",
+  title: "Catalog",
+  description:
+    "Browse Verdance composters, sensor cans, dehumidifiers, and quiet green home machines.",
 };
 
 type Props = {
@@ -30,18 +31,17 @@ export default async function ShopPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="plot-page">
-      <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)" }}>
-        The beds
-      </h1>
-      <p className="mt-4 mb-10 max-w-md text-[var(--ink-muted)]">
+    <div className="page-frame">
+      <p className="page-kicker">Seed packet catalog</p>
+      <h1 className="font-display page-title">The catalog</h1>
+      <p className="page-lede">
         {products.length} specimens
         {collection
           ? ` in ${collections.find((c) => c.handle === collection)?.title ?? collection}`
           : ""}
-        {q ? ` matching “${q}”` : ""}. Planted in rows, not a warehouse aisle.
+        {q ? ` matching “${q}”` : ""}. Indexed by genus, priced as equipment.
       </p>
-      <div className="mb-12">
+      <div className="mt-10 mb-12">
         <Suspense fallback={<div className="h-12" />}>
           <ShopFilters collections={collections} />
         </Suspense>

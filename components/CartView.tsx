@@ -12,10 +12,10 @@ export function CartView() {
     return (
       <div className="max-w-md">
         <p className="text-lg text-[var(--ink-muted)]">
-          The basket is empty. Walk the beds and pick a specimen.
+          The packet is empty. Open the catalog and sow a specimen.
         </p>
-        <Link href="/shop" className="seed">
-          Walk the beds →
+        <Link href="/shop" className="sow mt-6">
+          Open the catalog
         </Link>
       </div>
     );
@@ -27,16 +27,13 @@ export function CartView() {
         {items.map(({ product, quantity }) => (
           <div
             key={product.handle}
-            className="grid grid-cols-[96px_1fr] gap-4 border border-[var(--line)] bg-[var(--bg-elevated)] p-3 sm:grid-cols-[120px_1fr_auto]"
+            className="grid grid-cols-[96px_1fr] gap-4 border border-[var(--rule)] bg-[var(--paper-bright)] p-3 sm:grid-cols-[120px_1fr_auto]"
           >
-            <ProductVisual
-              product={product}
-              className="!aspect-square"
-            />
+            <ProductVisual product={product} className="!aspect-square" />
             <div className="min-w-0">
               <Link
                 href={`/shop/${product.handle}`}
-                className="font-display text-xl tracking-tight hover:text-[var(--ember)]"
+                className="font-display text-xl tracking-tight hover:text-[var(--leaf)]"
               >
                 {product.title}
               </Link>
@@ -53,13 +50,13 @@ export function CartView() {
                     onChange={(e) =>
                       setQuantity(product.handle, Number(e.target.value))
                     }
-                    className="ml-2 w-16 border border-[var(--line)] bg-[var(--bg-soft)] px-2 py-1 text-sm"
+                    className="ml-2 w-16 border border-[var(--rule)] bg-[var(--paper)] px-2 py-1 text-sm"
                   />
                 </label>
                 <button
                   type="button"
                   onClick={() => removeItem(product.handle)}
-                  className="text-xs text-[var(--ink-faint)] hover:text-[var(--ember)]"
+                  className="text-xs text-[var(--ink-faint)] hover:text-[var(--leaf)]"
                 >
                   Remove
                 </button>
@@ -72,27 +69,27 @@ export function CartView() {
         ))}
       </div>
 
-      <aside className="h-fit border border-[var(--line)] bg-[var(--bg-elevated)] p-6 lg:sticky lg:top-24">
-        <h2 className="font-display text-2xl tracking-tight">Order summary</h2>
+      <aside className="h-fit border border-[var(--rule-strong)] bg-[var(--paper-bright)] p-6 shadow-[inset_0_0_0_5px_var(--paper-bright),inset_0_0_0_6px_var(--rule)] lg:sticky lg:top-28">
+        <h2 className="font-display text-2xl tracking-tight">Packet summary</h2>
         <div className="mt-6 flex justify-between text-sm">
           <span className="text-[var(--ink-muted)]">Subtotal</span>
           <span className="font-semibold">{formatMoney(subtotal)}</span>
         </div>
         <p className="mt-4 text-xs leading-relaxed text-[var(--ink-faint)]">
-          Checkout connects to Shopify once your store credentials are set. Until
-          then, cart state is saved locally in this browser.
+          Checkout connects to Shopify once store credentials are set. Until
+          then, packet state stays in this browser.
         </p>
         <button type="button" className="btn btn-primary mt-6 w-full" disabled>
           Checkout via Shopify
         </button>
         <button type="button" onClick={clear} className="btn btn-ghost mt-3 w-full">
-          Clear cart
+          Empty packet
         </button>
         <Link
           href="/shop"
-          className="mt-4 block text-center text-sm text-[var(--ember)]"
+          className="mt-4 block text-center text-sm text-[var(--leaf-deep)]"
         >
-          Keep shopping
+          Keep cataloging
         </Link>
       </aside>
     </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
@@ -31,21 +32,22 @@ export default async function CollectionPage({ params }: Props) {
   if (!collection) notFound();
 
   const products = getProductsByCollection(slug);
+  const index = getCollections().findIndex((c) => c.handle === slug);
 
   return (
-    <div className="plot-page">
-      <p className="mb-4 text-sm text-[var(--ink-faint)]">
-        <Link href="/shop">The beds</Link>
-        <span className="mx-2">·</span>
-        <span>{collection.title}</span>
+    <div className="page-frame">
+      <p className="page-kicker">
+        <Link href="/shop">Catalog</Link>
+        <span className="mx-2 text-[var(--ink-faint)]">·</span>
+        Gen. {String(index + 1).padStart(2, "0")}
       </p>
-      <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.4rem)" }}>
-        {collection.title}
-      </h1>
-      <p className="mt-4 mb-10 max-w-md text-[var(--ink-muted)]">
-        {collection.description} {products.length} specimens in this bed.
+      <h1 className="font-display page-title">{collection.title}</h1>
+      <p className="page-lede">
+        {collection.description} {products.length} specimens in this genus.
       </p>
-      <ProductGrid products={products} />
+      <div className="mt-12">
+        <ProductGrid products={products} />
+      </div>
     </div>
   );
 }

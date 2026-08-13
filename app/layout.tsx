@@ -18,11 +18,11 @@ const body = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "Verdance — Quiet machines for a lighter household",
+    default: "Verdance — Quiet green home machines",
     template: "%s · Verdance",
   },
   description:
-    "Kitchen composters, outdoor tumblers, sensor cans, portable dehumidifiers, and a tray dryer. Each listing shows a catalog photo of that machine.",
+    "Botanical field-guide storefront for kitchen composters, outdoor tumblers, sensor cans, dehumidifiers, dehydrators, thermostats, and grow lights. Each listing shows the machine.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -30,12 +30,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${display.variable} ${body.variable} h-full`}>
       <body className="min-h-full antialiased">
         <CartProvider>
-          <div className="plot">
-            <div className="plot-body">
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
+          <div className="ledger">
             <Header />
+            <main className="ledger-main">{children}</main>
+            <Footer />
           </div>
         </CartProvider>
       </body>

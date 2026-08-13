@@ -21,16 +21,18 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-6">
-      <ol className="m-0 flex list-none flex-col gap-1 p-0">
+    <div className="grid gap-8 md:grid-cols-[16rem_1fr] md:items-end">
+      <ol className="m-0 flex list-none flex-col gap-1 border border-[var(--rule)] bg-[var(--paper-bright)] p-4">
         <li>
           <button
             type="button"
             onClick={() => update({ collection: "all" })}
-            className={`text-left ${active === "all" ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
+            className={`w-full text-left ${active === "all" ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
           >
-            <span className="mr-3 text-[0.72rem] tracking-[0.14em]">00</span>
-            Whole plot
+            <span className="mr-3 text-[0.68rem] font-bold tracking-[0.14em]">
+              00
+            </span>
+            Full ledger
           </button>
         </li>
         {collections.map((c, i) => (
@@ -38,9 +40,9 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
             <button
               type="button"
               onClick={() => update({ collection: c.handle })}
-              className={`text-left ${active === c.handle ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
+              className={`w-full text-left ${active === c.handle ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
             >
-              <span className="mr-3 text-[0.72rem] tracking-[0.14em]">
+              <span className="mr-3 text-[0.68rem] font-bold tracking-[0.14em]">
                 {String(i + 1).padStart(2, "0")}
               </span>
               {c.title}
@@ -48,14 +50,14 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
           </li>
         ))}
       </ol>
-      <label className="block w-full max-w-sm">
+      <label className="block w-full max-w-md">
         <span className="sr-only">Search products</span>
         <input
           type="search"
           defaultValue={q}
           placeholder="Find a specimen…"
           onChange={(e) => update({ q: e.target.value })}
-          className="w-full border-0 border-b border-[var(--line)] bg-transparent px-0 py-2 text-sm outline-none placeholder:text-[var(--ink-faint)] focus:border-[var(--ember)]"
+          className="w-full border border-[var(--rule)] bg-[var(--paper-bright)] px-3 py-3 text-sm outline-none placeholder:text-[var(--ink-faint)] focus:border-[var(--leaf)]"
         />
       </label>
     </div>
