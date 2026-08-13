@@ -11,11 +11,8 @@
   --ember-deep: #2a6a43;
   --copper: #c4a574;
   --line: rgba(238, 243, 236, 0.12);
-  --glow: rgba(61, 143, 92, 0.35);
   --background: var(--bg);
   --foreground: var(--ink);
-  --panel: #3d8f5c;
-  --panel-dim: #1e3d2c;
   --paper: #f4f0e6;
 }
 
@@ -153,6 +150,27 @@ input {
   position: relative;
   overflow: hidden;
   padding: 3.5rem 1.25rem 4rem;
+}
+
+.greenhouse__photo {
+  object-fit: cover;
+  object-position: center;
+}
+
+.greenhouse__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    rgba(12, 20, 16, 0.94) 0%,
+    rgba(12, 20, 16, 0.78) 45%,
+    rgba(18, 26, 22, 0.35) 100%
+  );
+}
+
+.greenhouse .eyebrow,
+.greenhouse .seed {
+  position: relative;
 }
 
 .panes {
@@ -357,11 +375,6 @@ input {
   }
 }
 
-.container {
-  width: min(1180px, calc(100% - 2rem));
-  margin-inline: auto;
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -431,53 +444,6 @@ input {
   color: var(--copper);
 }
 
-.cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.fade-up {
-  animation: fadeUp 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.fade-up-delay {
-  animation: fadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) 120ms both;
-}
-
-.fade-up-delay-2 {
-  animation: fadeUp 900ms cubic-bezier(0.22, 1, 0.36, 1) 220ms both;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes emberPulse {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(1.04);
-  }
-}
-
-.hero-sweep {
-  background:
-    radial-gradient(ellipse at 72% 38%, rgba(61, 143, 92, 0.28), transparent 42%),
-    linear-gradient(135deg, #1a2a22, #121a16 55%, #18241e);
-}
-
 .product-shot {
   background: var(--paper);
 }
@@ -486,21 +452,4 @@ input {
   object-fit: contain;
   object-position: center;
   background: var(--paper);
-}
-
-.product-glow {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-
-.product-glow::before {
-  content: "";
-  position: absolute;
-  inset: 18% 22%;
-  border-radius: 999px;
-  background: radial-gradient(circle, var(--glow), transparent 70%);
-  filter: blur(18px);
-  animation: emberPulse 4.5s ease-in-out infinite;
-  z-index: 0;
 }

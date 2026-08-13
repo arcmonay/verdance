@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ProductVisual } from "@/components/ProductVisual";
 import { getCollections, getFeaturedProducts, getProducts } from "@/lib/products";
@@ -10,6 +11,15 @@ export default function HomePage() {
   return (
     <>
       <section className="greenhouse">
+        <Image
+          src="/media/hero-greenhouse.webp"
+          alt="Dense foliage inside a glasshouse"
+          fill
+          priority
+          sizes="100vw"
+          className="greenhouse__photo"
+        />
+        <div className="greenhouse__scrim" aria-hidden />
         <div className="panes" aria-hidden />
         <p className="eyebrow">Quiet machines</p>
         <h1 className="font-display greenhouse__title">
