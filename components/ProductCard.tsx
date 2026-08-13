@@ -3,24 +3,20 @@ import { ProductVisual } from "@/components/ProductVisual";
 import { formatMoney } from "@/lib/products";
 import type { Product } from "@/lib/types";
 
-export function ProductCard({
-  product,
-  plate,
-}: {
-  product: Product;
-  plate?: number;
-}) {
-  const plateNo = plate ?? (Number(product.sku.replace(/\D/g, "")) || 1);
-
+export function ProductCard({ product }: { product: Product }) {
   return (
-    <Link href={`/shop/${product.handle}`} className="specimen group">
+    <Link href={`/shop/${product.handle}`} className="card group">
       <ProductVisual product={product} />
-      <div className="specimen__meta">
-        <span>Plate {String(plateNo).padStart(2, "0")}</span>
-        <span>{product.collection.replace(/-/g, " ")}</span>
+      <div className="card__body">
+        <p className="card__meta">{product.collection.replace(/-/g, " ")}</p>
+        <p className="card__title">{product.title}</p>
+        <p className="card__price">
+          {formatMoney(product.price)}
+          {product.compareAtPrice ? (
+            <s>{formatMoney(product.compareAtPrice)}</s>
+          ) : null}
+        </p>
       </div>
-      <p className="font-display specimen__title">{product.title}</p>
-      <p className="specimen__price">{formatMoney(product.price)}</p>
     </Link>
   );
 }

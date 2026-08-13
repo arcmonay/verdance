@@ -1,12 +1,12 @@
 import { CartView } from "@/components/CartView";
 
-export const metadata = { title: "Packet" };
+export const metadata = { title: "Cart" };
 
 export default function CartPage() {
   return (
-    <div className="page-frame">
-      <p className="page-kicker">Carry pouch</p>
-      <h1 className="font-display page-title">Your packet</h1>
+    <div className="page">
+      <p className="eyebrow">Cart</p>
+      <h1>Your cart</h1>
       <div className="mt-10">
         <CartView />
       </div>

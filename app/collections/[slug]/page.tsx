@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ProductGrid } from "@/components/ProductGrid";
@@ -32,20 +31,19 @@ export default async function CollectionPage({ params }: Props) {
   if (!collection) notFound();
 
   const products = getProductsByCollection(slug);
-  const index = getCollections().findIndex((c) => c.handle === slug);
 
   return (
-    <div className="page-frame">
-      <p className="page-kicker">
-        <Link href="/shop">Catalog</Link>
-        <span className="mx-2 text-[var(--ink-faint)]">·</span>
-        Gen. {String(index + 1).padStart(2, "0")}
+    <div className="page">
+      <p className="eyebrow">
+        <Link href="/shop">Shop</Link>
+        <span className="mx-2 text-[var(--ink-faint)]">/</span>
+        {collection.title}
       </p>
-      <h1 className="font-display page-title">{collection.title}</h1>
-      <p className="page-lede">
-        {collection.description} {products.length} specimens in this genus.
+      <h1>{collection.title}</h1>
+      <p className="page__lede">
+        {collection.description} {products.length} products in this category.
       </p>
-      <div className="mt-12">
+      <div className="mt-10">
         <ProductGrid products={products} />
       </div>
     </div>

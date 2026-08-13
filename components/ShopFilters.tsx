@@ -21,43 +21,33 @@ export function ShopFilters({ collections }: { collections: Collection[] }) {
   }
 
   return (
-    <div className="grid gap-8 md:grid-cols-[16rem_1fr] md:items-end">
-      <ol className="m-0 flex list-none flex-col gap-1 border border-[var(--rule)] bg-[var(--paper-bright)] p-4">
-        <li>
+    <div className="filters">
+      <div className="filters__chips">
+        <button
+          type="button"
+          onClick={() => update({ collection: "all" })}
+          className={`chip${active === "all" ? " is-active" : ""}`}
+        >
+          All
+        </button>
+        {collections.map((c) => (
           <button
+            key={c.handle}
             type="button"
-            onClick={() => update({ collection: "all" })}
-            className={`w-full text-left ${active === "all" ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
+            onClick={() => update({ collection: c.handle })}
+            className={`chip${active === c.handle ? " is-active" : ""}`}
           >
-            <span className="mr-3 text-[0.68rem] font-bold tracking-[0.14em]">
-              00
-            </span>
-            Full ledger
+            {c.title}
           </button>
-        </li>
-        {collections.map((c, i) => (
-          <li key={c.handle}>
-            <button
-              type="button"
-              onClick={() => update({ collection: c.handle })}
-              className={`w-full text-left ${active === c.handle ? "text-[var(--ink)]" : "text-[var(--ink-faint)]"}`}
-            >
-              <span className="mr-3 text-[0.68rem] font-bold tracking-[0.14em]">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              {c.title}
-            </button>
-          </li>
         ))}
-      </ol>
-      <label className="block w-full max-w-md">
+      </div>
+      <label>
         <span className="sr-only">Search products</span>
         <input
           type="search"
           defaultValue={q}
-          placeholder="Find a specimen…"
+          placeholder="Search products…"
           onChange={(e) => update({ q: e.target.value })}
-          className="w-full border border-[var(--rule)] bg-[var(--paper-bright)] px-3 py-3 text-sm outline-none placeholder:text-[var(--ink-faint)] focus:border-[var(--leaf)]"
         />
       </label>
     </div>

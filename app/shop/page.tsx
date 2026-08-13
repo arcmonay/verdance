@@ -9,7 +9,7 @@ import {
 } from "@/lib/products";
 
 export const metadata = {
-  title: "Catalog",
+  title: "Shop all",
   description:
     "Browse Verdance composters, sensor cans, dehumidifiers, and quiet green home machines.",
 };
@@ -31,21 +31,19 @@ export default async function ShopPage({ searchParams }: Props) {
   }
 
   return (
-    <div className="page-frame">
-      <p className="page-kicker">Seed packet catalog</p>
-      <h1 className="font-display page-title">The catalog</h1>
-      <p className="page-lede">
-        {products.length} specimens
+    <div className="page">
+      <p className="eyebrow">Shop</p>
+      <h1>Shop all</h1>
+      <p className="page__lede">
+        {products.length} products
         {collection
           ? ` in ${collections.find((c) => c.handle === collection)?.title ?? collection}`
           : ""}
-        {q ? ` matching “${q}”` : ""}. Indexed by genus, priced as equipment.
+        {q ? ` matching “${q}”` : ""}. Each photo is the machine listed.
       </p>
-      <div className="mt-10 mb-12">
-        <Suspense fallback={<div className="h-12" />}>
-          <ShopFilters collections={collections} />
-        </Suspense>
-      </div>
+      <Suspense fallback={<div className="h-12" />}>
+        <ShopFilters collections={collections} />
+      </Suspense>
       <ProductGrid products={products} />
     </div>
   );

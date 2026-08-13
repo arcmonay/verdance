@@ -38,14 +38,13 @@ export default async function ProductPage({ params }: { params: Params }) {
     .filter((p) => p.id !== product.id)
     .slice(0, 3);
   const gallery = getProductGallery(product.handle, product.image);
-  const plateNo = product.sku.replace(/\D/g, "").padStart(2, "0") || "01";
   const angles = gallery.slice(1);
 
   return (
     <>
-      <article className="specimen-sheet">
-        <div className="specimen-gallery">
-          <div className="specimen-hero-shot">
+      <article className="pdp">
+        <div className="pdp__gallery">
+          <div className="pdp__hero">
             <Image
               src={gallery[0]}
               alt={product.title}
@@ -56,15 +55,15 @@ export default async function ProductPage({ params }: { params: Params }) {
             />
           </div>
           {angles.length ? (
-            <div className="specimen-angles">
+            <div className="pdp__thumbs">
               {angles.map((src, i) => (
                 <div
                   key={src}
-                  className={`specimen-angle${src.includes("/catalog/") ? " specimen-angle--machine" : ""}`}
+                  className={`pdp__thumb${src.includes("/catalog/") ? " pdp__thumb--machine" : ""}`}
                 >
                   <Image
                     src={src}
-                    alt={`${product.title} — angle ${i + 2}`}
+                    alt={`${product.title} — view ${i + 2}`}
                     fill
                     sizes="160px"
                   />
@@ -74,26 +73,23 @@ export default async function ProductPage({ params }: { params: Params }) {
           ) : null}
         </div>
 
-        <div className="specimen-copy">
-          <div className="specimen-copy__plate">
-            <span>Plate {plateNo}</span>
-            {collection ? (
+        <div className="pdp__buy">
+          {collection ? (
+            <p className="eyebrow">
               <Link href={`/collections/${collection.handle}`}>
                 {collection.title}
               </Link>
-            ) : (
-              <span>{product.collection}</span>
-            )}
-          </div>
-          <h1 className="font-display">{product.title}</h1>
-          <p className="specimen-price">
+            </p>
+          ) : null}
+          <h1>{product.title}</h1>
+          <p className="pdp__price">
             {formatMoney(product.price)}
             {product.compareAtPrice ? (
               <s>{formatMoney(product.compareAtPrice)}</s>
             ) : null}
           </p>
-          <p className="specimen-blurb">{product.description}</p>
-          <ul className="ledger-rows">
+          <p className="pdp__desc">{product.description}</p>
+          <ul className="pdp__specs">
             {[
               ["Material", product.material],
               ["Size", product.size],
@@ -115,10 +111,10 @@ export default async function ProductPage({ params }: { params: Params }) {
       </article>
 
       {related.length ? (
-        <section className="section">
+        <section className="section section--soft">
           <div className="section__head">
-            <h2 className="font-display">Same genus</h2>
-            <p>Related machines</p>
+            <h2>You may also like</h2>
+            <p>Same category</p>
           </div>
           <ProductGrid products={related} />
         </section>

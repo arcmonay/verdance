@@ -10,79 +10,83 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="packet-open" aria-label="Open seed packet">
-        <div className="packet-face">
-          <div>
-            <div className="packet-face__lot">
-              <span>Packet No. 01</span>
-              <span>Quiet machines</span>
+      <section className="hero">
+        <div className="hero__grid">
+          <div className="hero__copy">
+            <p className="eyebrow">Quiet green home machines</p>
+            <h1>You deserve better than smelly, overflowing scraps.</h1>
+            <p>
+              Kitchen composters, outdoor tumblers, sensor cans, dehumidifiers,
+              and related machines — each listing shows the unit in the photo.
+            </p>
+            <div className="hero__actions">
+              <Link href="/shop" className="btn btn-primary">
+                Shop the lineup
+              </Link>
+              <Link href="/collections/composters" className="btn btn-ghost">
+                See composters
+              </Link>
             </div>
-            <h1 className="font-display packet-face__brand">
-              Verdan<span>ce</span>
-            </h1>
-            <p className="font-display packet-face__headline">
-              Sow quieter rooms. Keep the kitchen green.
-            </p>
-            <p className="packet-face__lede">
-              Composters, tumblers, sensor cans, dehumidifiers, dehydrators,
-              thermostats, and grow lights — cataloged like specimens, sold as
-              the machines in the photos.
-            </p>
           </div>
-          <div className="packet-face__actions">
-            <Link href="/shop" className="sow">
-              Open the catalog
-            </Link>
-            <Link href="/collections/composters" className="sow-ghost">
-              Start with compost
-            </Link>
-          </div>
-        </div>
-
-        <div className="packet-plate">
-          <Image
-            src="/media/hero.webp"
-            alt="Bright white botanical kitchen with trailing plants"
-            fill
-            priority
-            sizes="(max-width: 960px) 100vw, 55vw"
-            quality={90}
-          />
-          <div className="packet-plate__frame" aria-hidden />
-          <div className="packet-plate__caption">
-            <span>Plate A · Kitchen field</span>
-            <span>White / living green</span>
+          <div className="hero__media">
+            <Image
+              src="/media/hero.webp"
+              alt="Bright kitchen with plants — Verdance habitat"
+              fill
+              priority
+              sizes="(max-width: 960px) 100vw, 55vw"
+              quality={90}
+            />
           </div>
         </div>
       </section>
 
       <section className="section">
         <div className="section__head">
-          <h2 className="font-display">Genus index</h2>
-          <Link href="/shop">{total} specimens in stock</Link>
+          <h2>How it fits your kitchen</h2>
+          <p>Simple, quiet equipment</p>
         </div>
-        <div className="guide-strip">
-          <Image
-            src="/media/kitchen-island.webp"
-            alt="Marble kitchen island with fern and fruit bowl"
-            fill
-            sizes="(max-width: 960px) 100vw, 1120px"
-            className="object-cover"
-          />
-          <span className="guide-strip__label">Habitat plate</span>
+        <div className="steps">
+          <div className="step">
+            <span className="step__num">1</span>
+            <h3>Pick the machine</h3>
+            <p>
+              Browse composters, cans, dehumidifiers, and more. Photos are the
+              catalog units — not mood boards.
+            </p>
+          </div>
+          <div className="step">
+            <span className="step__num">2</span>
+            <h3>Check the specs</h3>
+            <p>
+              Material, size, finish, weight, and a single highlight on every
+              product page so you can compare equipment.
+            </p>
+          </div>
+          <div className="step">
+            <span className="step__num">3</span>
+            <h3>Run it quietly</h3>
+            <p>
+              Install, load scraps or set humidity, and keep the rest of the
+              house calmer — without theater claims.
+            </p>
+          </div>
         </div>
-        <div className="genus-grid">
-          {collections.map((c, i) => (
-            <Link
-              key={c.handle}
-              href={`/collections/${c.handle}`}
-              className="genus"
-            >
-              <span className="genus__code">
-                Gen. {String(i + 1).padStart(2, "0")}
-              </span>
-              <strong className="font-display">{c.title}</strong>
-              <span>{c.description}</span>
+      </section>
+
+      <section className="section section--soft">
+        <div className="section__head">
+          <h2>Shop by category</h2>
+          <Link href="/shop">{total} products</Link>
+        </div>
+        <div className="cat-grid">
+          {collections.map((c) => (
+            <Link key={c.handle} href={`/collections/${c.handle}`} className="cat">
+              <div>
+                <strong>{c.title}</strong>
+                <span>{c.description}</span>
+              </div>
+              <em>Shop {c.title.toLowerCase()} →</em>
             </Link>
           ))}
         </div>
@@ -90,13 +94,32 @@ export default function HomePage() {
 
       <section className="section">
         <div className="section__head">
-          <h2 className="font-display">Featured plates</h2>
-          <p>Machines already in the ledger</p>
+          <h2>Featured machines</h2>
+          <Link href="/shop">View all</Link>
         </div>
-        <div className="plate-grid">
-          {featured.map((product, i) => (
-            <ProductCard key={product.id} product={product} plate={i + 1} />
+        <div className="product-grid">
+          {featured.map((product) => (
+            <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+      </section>
+
+      <section className="section section--brand">
+        <div className="section__head">
+          <h2>Keep the kitchen fresher</h2>
+          <Link href="/impact">Read the impact notes →</Link>
+        </div>
+        <div className="wrap" style={{ maxWidth: "40rem" }}>
+          <p style={{ margin: 0, fontSize: "1.08rem", lineHeight: 1.55 }}>
+            Verdance focuses on operational jobs: reducing food scrap volume,
+            drying surplus produce, and pulling moisture from damp rooms. Spec
+            sheets list what the machine is — not carbon-offset slogans.
+          </p>
+          <div style={{ marginTop: "1.35rem" }}>
+            <Link href="/shop" className="btn btn-dark">
+              Start shopping
+            </Link>
+          </div>
         </div>
       </section>
     </>

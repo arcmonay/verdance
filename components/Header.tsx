@@ -7,12 +7,12 @@ import { BrandLogo } from "@/components/BrandLogo";
 import { useCart } from "@/lib/cart-context";
 
 const links = [
-  { href: "/shop", label: "Catalog" },
-  { href: "/collections/composters", label: "Compost" },
+  { href: "/shop", label: "Shop all" },
+  { href: "/collections/composters", label: "Composters" },
   { href: "/collections/waste-systems", label: "Waste" },
-  { href: "/collections/dehumidifiers", label: "Climate" },
-  { href: "/impact", label: "Ledger" },
-  { href: "/about", label: "Origin" },
+  { href: "/collections/dehumidifiers", label: "Dehumidifiers" },
+  { href: "/impact", label: "Impact" },
+  { href: "/about", label: "About" },
 ];
 
 export function Header() {
@@ -21,77 +21,83 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="packet-banner">
-      <div className="packet-banner__inner">
-        <Link href="/" className="packet-brand" onClick={() => setOpen(false)}>
-          <BrandLogo width={34} height={52} priority className="packet-seal" />
-          <span className="packet-wordmark">
-            <strong>
-              Verdan<em>ce</em>
-            </strong>
-            <small>Seed packet ledger · Lot 2025</small>
-          </span>
-        </Link>
-
-        <nav className="packet-nav" aria-label="Primary">
-          {links.map((link) => {
-            const active =
-              pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={active ? "is-active" : ""}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-
-        <div className="packet-lot">
-          <div className="packet-lot__meta">
-            Quiet machines
-            <br />
-            Field guide
-          </div>
-          <button
-            type="button"
-            className="packet-menu-btn"
-            aria-expanded={open}
-            aria-controls="packet-drawer"
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? "Close" : "Menu"}
-          </button>
-          <Link href="/cart" className="packet-basket" onClick={() => setOpen(false)}>
-            Packet{count > 0 ? ` · ${count}` : ""}
+    <>
+      <div className="announce">
+        Free shipping on machines · Specs on every listing ·{" "}
+        <Link href="/shop">Shop the lineup</Link>
+      </div>
+      <header className="topbar">
+        <div className="topbar__inner">
+          <Link href="/" className="topbar__brand" onClick={() => setOpen(false)}>
+            <BrandLogo width={28} height={42} priority />
+            Verdance
           </Link>
-        </div>
-      </div>
 
-      <div
-        id="packet-drawer"
-        className={`packet-drawer${open ? " is-open" : ""}`}
-      >
-        <nav aria-label="Mobile">
-          {links.map((link) => {
-            const active =
-              pathname === link.href || pathname.startsWith(`${link.href}/`);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={active ? "is-active" : ""}
-                onClick={() => setOpen(false)}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
-      <div className="packet-perf" aria-hidden />
-    </header>
+          <nav className="topbar__nav" aria-label="Primary">
+            {links.map((link) => {
+              const active =
+                pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={active ? "is-active" : ""}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          <div className="topbar__actions">
+            <button
+              type="button"
+              className="topbar__menu"
+              aria-expanded={open}
+              aria-controls="mobile-nav"
+              onClick={() => setOpen((v) => !v)}
+            >
+              {open ? "Close" : "Menu"}
+            </button>
+            <Link
+              href="/shop"
+              className="btn btn-primary btn-sm"
+              onClick={() => setOpen(false)}
+            >
+              Shop
+            </Link>
+            <Link
+              href="/cart"
+              className="btn btn-ghost btn-sm"
+              onClick={() => setOpen(false)}
+            >
+              Cart{count > 0 ? ` (${count})` : ""}
+            </Link>
+          </div>
+        </div>
+
+        <div
+          id="mobile-nav"
+          className={`topbar__drawer${open ? " is-open" : ""}`}
+        >
+          <nav aria-label="Mobile">
+            {links.map((link) => {
+              const active =
+                pathname === link.href || pathname.startsWith(`${link.href}/`);
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={active ? "is-active" : ""}
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+      </header>
+    </>
   );
 }
