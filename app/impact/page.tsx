@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Impact",
   description:
@@ -11,6 +13,15 @@ export default function ImpactPage() {
       <h1 className="font-display greenhouse__title" style={{ fontSize: "clamp(2.6rem, 6vw, 4.2rem)" }}>
         Materials, energy, and less waste.
       </h1>
+      <div className="field-visual mt-8" style={{ minHeight: "14rem" }}>
+        <Image
+          src="/media/succulent.webp"
+          alt="Succulent in a mint pot on a white surface"
+          fill
+          sizes="(max-width: 960px) 100vw, 42rem"
+          className="object-cover"
+        />
+      </div>
       <div className="mt-8 space-y-5 text-lg leading-relaxed text-[var(--ink-muted)]">
         <p>
           Household waste and standby power add up quietly. Verdance machines

@@ -12,11 +12,12 @@ export default function HomePage() {
     <>
       <section className="greenhouse">
         <Image
-          src="/media/hero-greenhouse.webp"
-          alt="Dense foliage inside a glasshouse"
+          src="/media/hero.webp"
+          alt="Bright white kitchen with trailing plants and wooden utensils"
           fill
           priority
           sizes="100vw"
+          quality={90}
           className="greenhouse__photo"
         />
         <div className="greenhouse__scrim" aria-hidden />
@@ -40,6 +41,15 @@ export default function HomePage() {
         <div className="field__head">
           <h2 className="font-display">Field guide</h2>
           <Link href="/shop">{total} specimens</Link>
+        </div>
+        <div className="field-visual">
+          <Image
+            src="/media/kitchen-island.webp"
+            alt="Marble kitchen island with a fern and fruit bowl"
+            fill
+            sizes="(max-width: 960px) 100vw, 70vw"
+            className="object-cover"
+          />
         </div>
         <div className="leaves">
           {collections.map((c) => (
